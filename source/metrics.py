@@ -10,7 +10,7 @@ def f1_score(
 
     f1 = seqmetrics.f1_score(
         [tags], [preds]
-        , scheme = seqscheme.BIO2, mode = "strict"
+        , scheme = seqscheme.IOB2, mode = "strict"
         , average = "micro"
     )
 
@@ -26,7 +26,7 @@ def classification_report(
 
     report = seqmetrics.classification_report(
         [tags], [preds]
-        , scheme = seqscheme.BIO2, mode = "strict"
+        , scheme = seqscheme.IOB2, mode = "strict"
         , digits = 4
     )
 

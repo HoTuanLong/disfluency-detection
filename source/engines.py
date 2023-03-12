@@ -25,7 +25,7 @@ def train(train_loaders, num_epochs, model, optimizer, save_ckp_dir="./"):
 
             running_loss += loss.item()*words.size(0)
 
-            running_tags.extend(list(tags.long().view(-1)).detach().cpu().numpy())
+            running_tags.extend(list(tags.long().view(-1).detach().cpu().numpy()))
             running_preds.extend(list(np.argmax(logits.detach().cpu().numpy(), axis=1)))
 
         train_loss, train_f1 = running_loss/len(train_loaders["train"].dataset), f1_score(np.array(running_tags), np.array(running_preds), 
@@ -45,7 +45,7 @@ def train(train_loaders, num_epochs, model, optimizer, save_ckp_dir="./"):
 
                 running_loss += loss.item()*words.size(0)
 
-                running_tags.extend(list(tags.long().view(-1)).detach().cpu().numpy())
+                running_tags.extend(list(tags.long().view(-1).detach().cpu().numpy()))
                 running_preds.extend(list(np.argmax(logits.detach().cpu().numpy(), axis=1)))
         
         val_loss, val_f1 = running_loss/len(train_loaders["val"]), f1_score(np.array(running_tags), np.array(running_preds), 
@@ -75,10 +75,12 @@ def test(test_loader, model):
 
             running_loss += loss.item()*words.size(0)
             running_tags.extend(list(tags.long().view(-1).detach().cpu().numpy()))
-            running_preds.extend(logits.detach().cpu().numpy())
+            running_preds.extend(list(np.argmax(logits.detach().cpu().numpy(), axis = 1)))
     
-    test_report = classification_report(np.array(running_tags), np.array(running_preds), tag_names=test_loader.dataset.tag_names)
-
+    test_report = classification_report(
+        np.array(running_tags), np.array(running_preds)
+        , tag_names = test_loader.dataset.tag_names
+    )
     print("Test Report:\n")
     print(test_report)
 

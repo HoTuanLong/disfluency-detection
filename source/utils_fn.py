@@ -1,5 +1,5 @@
 from libs import *
-from keras.utils import utils
+import keras.utils as utils
 
 def capitalized_string(string):
     split_string = string.split("_")
@@ -7,7 +7,7 @@ def capitalized_string(string):
     capitalized_string = "_".join(capitalized)
     return capitalized_string
 
-def pad_sequence(sequence, value):
+def pad_sequence(sequences, value):
     sequence = utils.pad_sequences([sequences], 64, truncating="post", padding="post", value=value)[0].tolist()
     return sequence
 

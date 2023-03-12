@@ -22,4 +22,4 @@ class Dataset(torch.utils.data.Dataset):
         sample = self.data[index]
         words, tags = sample["words"], sample["tags"]
         encoded_words, encoded_tags = encode_ner(words, tags, tokenizer=self.tokenizer, tag_names=self.tag_names)
-        return np.array(encoded_words), np.array(encode_tags)
+        return np.array(encoded_words), np.array(encoded_tags)

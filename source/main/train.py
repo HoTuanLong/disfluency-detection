@@ -1,17 +1,14 @@
 import os, sys
 __dir__ = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(__dir__)
-sys.path.append(os.path.abspath(os.path.join(__dir__, "..")))
+sys.path.append(__dir__), sys.path.append(os.path.abspath(os.path.join(__dir__, "..")))
 
 from libs import *
 from data import *
 from engines import *
 
-
-
 if __name__ == "__main__":
-    with open("../config.json", 'r') as config:
-            config = config.read()
+    with open("source/config.json", 'r') as config:
+        config = config.read()
     config = json.loads(config)
 
     tag_names = [
@@ -59,7 +56,7 @@ if __name__ == "__main__":
         os.makedirs(save_ckp_dir)
 
     train(
-        train_loaders, num_epochs=config["num_epochs"],
+        train_loader, num_epochs=config["num_epochs"],
         model = model,
         optimizer = optimizer,
         save_ckp_dir = save_ckp_dir,

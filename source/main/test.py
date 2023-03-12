@@ -1,14 +1,15 @@
 import os, sys
+__dir__ = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(__dir__)
+sys.path.append(os.path.abspath(os.path.join(__dir__, "..")))
 from libs import *
 from data import *
 from engines import *
 
-__dir__ = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(__dir__)
-sys.path.append(os.path.abspath(os.path.join(__dir__, "..")))
+
 
 if __name__ == "__main__":
-    with open("../config.json"), 'r') as config:
+    with open("source/config.json", 'r') as config:
             config = config.read()
     config = json.loads(config)
 
@@ -20,7 +21,7 @@ if __name__ == "__main__":
         "I-IM"
     ]
 
-    test_loader = torch.utils.dataset.DataLoader(
+    test_loader = torch.utils.data.DataLoader(
         Dataset(
             data_path = config["test_path"],
             tag_names = tag_names
