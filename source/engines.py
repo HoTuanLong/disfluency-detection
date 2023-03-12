@@ -31,6 +31,7 @@ def train(train_loaders, num_epochs, model, optimizer, save_ckp_dir="./"):
         train_loss, train_f1 = running_loss/len(train_loaders["train"].dataset), f1_score(np.array(running_tags), np.array(running_preds), 
                                                                                             tag_names=train_loaders["train"].dataset.tag_names)
         print(f"train - loss: {train_loss}, f1:{train_f1}")
+        wandb.log({"train_loss": train_loss, "train_f1": train_f1}, step=epoch)
 
         with torch.no_grad():
             model.eval()
@@ -53,6 +54,9 @@ def train(train_loaders, num_epochs, model, optimizer, save_ckp_dir="./"):
         if val_f1 > best_f1:
             torch.save(model, f"{save_ckp_dir}/best.ptl")
             best_f1 = val_f1
+        
+        print(f"val - loss: {val_loss}, f1:{val_f1}")
+        wandb.log({"val_loss": val_loss, "val_f1": val_f1}, step=epoch)
     
     print("\Finish Training " + "-"*16)
 

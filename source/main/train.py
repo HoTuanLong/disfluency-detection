@@ -11,6 +11,12 @@ if __name__ == "__main__":
         config = config.read()
     config = json.loads(config)
 
+    wandb.login()
+    wandb.init(wandb.init(
+        entity = "longht", project = "Disfluency", 
+        name = "train", 
+    ))
+
     tag_names = [
         "O",
         "B-RM",

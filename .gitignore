@@ -1,1 +1,3 @@
-./ckps
+/ckps
+/wandb
+/source/__pycache__
