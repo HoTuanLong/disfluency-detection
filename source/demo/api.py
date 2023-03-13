@@ -1,3 +1,6 @@
+import os, sys
+__dir__ = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(__dir__), sys.path.append(os.path.abspath(os.path.join(__dir__, "..")))
 from libs import *
 
 class Disfluency():
@@ -13,18 +16,18 @@ class Disfluency():
             "I-IM": []
         }
 
-        print(sentence)
         sentence = vitools.normalize_diacritics(sentence)
-        print(sentence)
         sentence = underthesea.word_tokenize(sentence, format = "text")
-        print(sentence)
         pred = self.model(sentence)
-
         print(pred)
 
 if __name__ == '__main__':
-    
-    model = Disfluency(ckp_dir = "/home/ubuntu/long.ht/disfluency/ckps/Disfluency/word/")
+
+    with open("source/config.json", 'r') as config:
+        config = config.read()
+    config = json.loads(config)
+    save_ckp_dir = config["save_dir"]
+    model = Disfluency(ckp_dir = save_ckp_dir)
     model.prediction(sentence = "chiều à không sáng thứ hai tôi muốn bay từ cà mau đến thanh hoá")
 
     
