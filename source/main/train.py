@@ -67,3 +67,8 @@ if __name__ == "__main__":
         optimizer = optimizer,
         save_ckp_dir = save_ckp_dir,
     )
+
+    tokenizer = transformers.PreTrainedTokenizerFast.from_pretrained("vinai/phobert-large", use_fast = False,)
+    tokenizer.save_pretrained(save_ckp_dir)
+    ckp_model = torch.load(save_ckp_dir + "/best.ptl")
+    ckp_model.save_pretrained(save_ckp_dir)
