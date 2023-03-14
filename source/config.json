@@ -4,7 +4,7 @@
     "test_path": "datasets/word-level/test/test.json",
     "save_dir": "ckps/Disfluency/word",
     "num_workers": 4,
-    "batch_size" :64,
+    "batch_size" :16,
     "learning_rate": 1e-5,
-    "num_epochs": 20
+    "num_epochs": 15
 }
