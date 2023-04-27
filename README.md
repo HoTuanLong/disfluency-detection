@@ -1,6 +1,6 @@
 # Vietnamese Disfluency Detection
 ## Overview
-This repository contains code for a Vietnamese disfluency detection system, which is a reimplementation of the method proposed in the paper "Disfluency Detection for Vietnamese" by Nguyen et al. The system is implemented using the HuggingFace framework.
+This repository contains code for a Vietnamese disfluency detection system, which is a reimplementation of the method proposed in the paper "Disfluency Detection for Vietnamese" by Dao et al. The system is implemented using the HuggingFace framework.
 
 ## Usage
 To use the Vietnamese disfluency detection system, follow these steps:
