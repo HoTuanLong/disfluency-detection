@@ -1,0 +1,13 @@
+gradio==3.20.1
+keras==2.11.0
+nltk==3.8.1
+numpy==1.24.2
+py-vncorenlp==0.1.4
+torch
+torchmetrics==0.11.4
+tqdm==4.65.0
+transformers==4.26.1
+underthesea==6.2.0
+viet-text-tools==0.1.6
+wandb==0.13.11
+pytorch_lightning
